@@ -30,17 +30,20 @@ def vote_open():
     except:
         return jsonify({'status': 'fail'})
 
-@app.route('/vote', methods=[])
+@app.route('/vote', methods=['POST'])
 def vote():
     try:
         data = request.get_json()
-        block = {
+        block2 = {
             'type': 'vote',
-            'data':{
-                'vote':data['vote']
+            'data': {
+                'id': '0',
+                'vote': data['vote']
             }
         }
-        chain.append(block)
+        chain.append(block2)
         return jsonify({'status':'success'})
     except:
         return jsonify({'status': 'fail'})
+
+app.run()
